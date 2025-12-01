@@ -3,7 +3,7 @@ package auth
 import (
 	"context"
 
-	"github.com/Deepreo/bakend/pkg/errors"
+	"github.com/Deepreo/bakend/errors"
 
 	"time"
 

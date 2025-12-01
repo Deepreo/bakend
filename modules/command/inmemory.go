@@ -6,7 +6,7 @@ import (
 	"reflect"
 	"sync"
 
-	"github.com/Deepreo/bakend/pkg/core"
+	"github.com/Deepreo/bakend/core"
 )
 
 type inMemory struct {

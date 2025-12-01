@@ -8,7 +8,7 @@ import (
 	"reflect"
 	"time"
 
-	"github.com/Deepreo/bakend/pkg/core"
+	"github.com/Deepreo/bakend/core"
 	"github.com/ThreeDotsLabs/watermill"
 	"github.com/ThreeDotsLabs/watermill/message"
 	"github.com/ThreeDotsLabs/watermill/message/router/middleware"

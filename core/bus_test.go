@@ -6,7 +6,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Deepreo/bakend/pkg/core"
+	"github.com/Deepreo/bakend/core"
 )
 
 // --- Mocks for Command Bus ---

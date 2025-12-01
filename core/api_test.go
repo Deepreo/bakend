@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/Deepreo/bakend/pkg/core"
+	"github.com/Deepreo/bakend/core"
 )
 
 // mockServer implements core.ServerInterface for testing purposes

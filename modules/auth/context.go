@@ -4,7 +4,7 @@ import (
 	"context"
 	"time"
 
-	"github.com/Deepreo/bakend/pkg/errors"
+	"github.com/Deepreo/bakend/errors"
 	"github.com/google/uuid"
 )
 

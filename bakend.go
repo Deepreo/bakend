@@ -5,12 +5,12 @@ import (
 	"log/slog"
 	"os"
 
-	"github.com/Deepreo/bakend/pkg/core"
-	"github.com/Deepreo/bakend/pkg/modules/command"
-	"github.com/Deepreo/bakend/pkg/modules/event"
-	"github.com/Deepreo/bakend/pkg/modules/query"
-	"github.com/Deepreo/bakend/pkg/modules/scheduler"
-	"github.com/Deepreo/bakend/pkg/modules/servers"
+	"github.com/Deepreo/bakend/core"
+	"github.com/Deepreo/bakend/modules/command"
+	"github.com/Deepreo/bakend/modules/event"
+	"github.com/Deepreo/bakend/modules/query"
+	"github.com/Deepreo/bakend/modules/scheduler"
+	"github.com/Deepreo/bakend/modules/servers"
 )
 
 type Application struct {

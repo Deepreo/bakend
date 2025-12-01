@@ -5,7 +5,7 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Deepreo/bakend/pkg/core"
+	"github.com/Deepreo/bakend/core"
 )
 
 // mockScheduler implements core.Scheduler for testing purposes

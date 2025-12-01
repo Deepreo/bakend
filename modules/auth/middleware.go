@@ -3,8 +3,8 @@ package auth
 import (
 	"context"
 
-	"github.com/Deepreo/bakend/pkg/core"
-	"github.com/Deepreo/bakend/pkg/errors"
+	"github.com/Deepreo/bakend/core"
+	"github.com/Deepreo/bakend/errors"
 	"go.elastic.co/apm/v2"
 )
 
