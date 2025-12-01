@@ -1,4 +1,4 @@
-package bakend
+package app
 
 import (
 	"context"
