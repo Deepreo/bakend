@@ -5,7 +5,7 @@ import (
 	"errors"
 	"testing"
 
-	"github.com/Deepreo/bakend/core"
+	"github.com/Deepreo/bakend/pkg/core"
 	"github.com/stretchr/testify/assert"
 )
 

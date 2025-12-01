@@ -7,7 +7,7 @@ import (
 	"sync"
 	"time"
 
-	"github.com/Deepreo/bakend/core"
+	"github.com/Deepreo/bakend/pkg/core"
 	"github.com/go-co-op/gocron/v2"
 	"github.com/google/uuid"
 )

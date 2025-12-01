@@ -1,20 +1,18 @@
-package errors_test
+package errors
 
 import (
 	"errors"
 	"strings"
 	"testing"
-
-	commonErrors "github.com/Deepreo/bakend/errors"
 )
 
 func TestExtendError(t *testing.T) {
 	baseErr := errors.New("base error")
 
 	t.Run("Wrap and Unwrap", func(t *testing.T) {
-		infraErr := commonErrors.InfraError(baseErr)
+		infraErr := InfraError(baseErr)
 
-		if !commonErrors.Is(baseErr, infraErr) {
+		if !Is(baseErr, infraErr) {
 			t.Error("Expected infraErr to be baseErr")
 		}
 
@@ -29,7 +27,7 @@ func TestExtendError(t *testing.T) {
 	})
 
 	t.Run("Code and Metadata", func(t *testing.T) {
-		err := commonErrors.AppError(baseErr).
+		err := AppError(baseErr).
 			WithCode("APP_ERR_001").
 			WithMetadata("userID", 123)
 
@@ -49,7 +47,7 @@ func TestExtendError(t *testing.T) {
 	})
 
 	t.Run("StackTrace", func(t *testing.T) {
-		err := commonErrors.DomainError(baseErr)
+		err := DomainError(baseErr)
 		if err.StackTrace == "" {
 			t.Error("Expected stack trace to be present")
 		}
@@ -60,13 +58,13 @@ func TestExtendError(t *testing.T) {
 	})
 
 	t.Run("Helper Functions", func(t *testing.T) {
-		infraErr := commonErrors.InfraError(baseErr)
-		if !commonErrors.IsInfraError(infraErr) {
+		infraErr := InfraError(baseErr)
+		if !IsInfraError(infraErr) {
 			t.Error("Expected IsInfraError to return true")
 		}
 
-		appErr := commonErrors.AppError(baseErr)
-		if !commonErrors.IsAppError(appErr) {
+		appErr := AppError(baseErr)
+		if !IsAppError(appErr) {
 			t.Error("Expected IsAppError to return true")
 		}
 	})

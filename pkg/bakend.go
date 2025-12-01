@@ -4,7 +4,7 @@ import (
 	"context"
 	"log/slog"
 
-	"github.com/Deepreo/bakend/core"
+	"github.com/Deepreo/bakend/pkg/core"
 )
 
 type Application struct {

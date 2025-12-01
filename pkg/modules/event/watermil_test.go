@@ -7,8 +7,8 @@ import (
 	"testing"
 	"time"
 
-	"github.com/Deepreo/bakend/core"
-	"github.com/Deepreo/bakend/modules/event"
+	"github.com/Deepreo/bakend/pkg/core"
+	"github.com/Deepreo/bakend/pkg/modules/event"
 )
 
 type TestEvent struct {

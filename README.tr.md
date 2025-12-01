@@ -34,7 +34,7 @@ import (
 	"os"
 
 	"github.com/Deepreo/bakend"
-	"github.com/Deepreo/bakend/core"
+	"github.com/Deepreo/bakend/pkg/core"
 	// ... diğer importlar
 )
 

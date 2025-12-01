@@ -6,9 +6,9 @@ import (
 	"html/template"
 	"time"
 
-	"github.com/Deepreo/bakend/core"
-	"github.com/Deepreo/bakend/errors"
-	"github.com/Deepreo/bakend/modules/auth"
+	"github.com/Deepreo/bakend/pkg/core"
+	"github.com/Deepreo/bakend/pkg/errors"
+	"github.com/Deepreo/bakend/pkg/modules/auth"
 	"github.com/gofiber/fiber/v2"
 	"github.com/gofiber/fiber/v2/middleware/cors"
 	"github.com/gofiber/fiber/v2/middleware/etag"

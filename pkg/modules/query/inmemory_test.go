@@ -4,7 +4,7 @@ import (
 	"context"
 	"testing"
 
-	"github.com/Deepreo/bakend/core"
+	"github.com/Deepreo/bakend/pkg/core"
 )
 
 type TestQuery struct {
