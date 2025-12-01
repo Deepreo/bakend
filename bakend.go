@@ -81,6 +81,10 @@ func RegisterEndpoint[R core.Request, Res core.Response](app *Application, metho
 	core.RegisterEndpoint(app.server, method, path, handler)
 }
 
+func ExecuteQuery[Q core.Query, R core.QueryResponse](ctx context.Context, bus core.QueryBus, query Q) (R, error) {
+	return core.ExecuteQuery[Q, R](ctx, bus, query)
+}
+
 func (app *Application) GetCommandBus() core.CommandBus {
 	return app.commandBus
 }
