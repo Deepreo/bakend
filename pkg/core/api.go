@@ -17,9 +17,6 @@ type HandlerInterface[R Request, Res Response] interface {
 	Handle(ctx context.Context, req R) (Res, error)
 }
 
-// Middleware, handler'ı sarmalayan fonksiyon tipidir.
-type Middleware func(next HandlerFunc) HandlerFunc
-
 // HandlerFunc, tip silinmiş (Type-Erased) handler fonksiyonu.
 type HandlerFunc func(ctx context.Context, req any) (any, error)
 
@@ -27,7 +24,6 @@ type HandlerFunc func(ctx context.Context, req any) (any, error)
 type Server interface {
 	Run() error
 	Shutdown(ctx context.Context) error
-	Use(middleware ...Middleware)
 	Register(method, path string, handler HandlerFunc, reqFactory func() any)
 }
 

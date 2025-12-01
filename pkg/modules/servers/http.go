@@ -168,7 +168,6 @@ func NewHttpServer(options ...func(*HttpServerConfig)) (*HttpServer, error) {
 	server.applyMiddlewares()
 	return server, nil
 }
-
 func (s *HttpServer) applyMiddlewares() {
 	s.app.Use(recover.New())
 	s.app.Use(helmet.New())

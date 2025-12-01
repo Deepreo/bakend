@@ -9,6 +9,7 @@ import (
 	"github.com/Deepreo/bakend/pkg/modules/command"
 	"github.com/Deepreo/bakend/pkg/modules/event"
 	"github.com/Deepreo/bakend/pkg/modules/query"
+	"github.com/Deepreo/bakend/pkg/modules/scheduler"
 	"github.com/Deepreo/bakend/pkg/modules/servers"
 )
 
@@ -18,12 +19,12 @@ type Application struct {
 	queryBus   core.QueryBus
 	eventBus   core.EventBus
 	scheduler  core.Scheduler
-	logger     slog.Logger
+	logger     *slog.Logger
 }
 
 func New() (*Application, error) {
 	logger := slog.New(slog.NewTextHandler(os.Stdout, nil))
-	httpServer, err := servers.NewServer()
+	httpServer, err := servers.NewHttpServer()
 	if err != nil {
 		return nil, err
 	}
@@ -33,12 +34,16 @@ func New() (*Application, error) {
 	if err != nil {
 		return nil, err
 	}
+	sC, err := scheduler.NewInMemoryScheduler()
+	if err != nil {
+		return nil, err
+	}
 	return &Application{
-		server:     server,
+		server:     httpServer,
 		commandBus: cBus,
 		queryBus:   qBus,
 		eventBus:   eBus,
-		scheduler:  scheduler,
+		scheduler:  sC,
 		logger:     logger,
 	}, nil
 }
@@ -58,4 +63,32 @@ func (app *Application) Shutdown(ctx context.Context) error {
 		app.scheduler.Shutdown()
 	}
 	return app.server.Shutdown(ctx)
+}
+
+func RegisterCommand[C core.Command, H core.CommandHandler[C]](bus core.CommandBus, handler H) error {
+	return core.RegisterCommand(bus, handler)
+}
+
+func RegisterQuery[Q core.Query, R core.QueryResponse](bus core.QueryBus, handler core.QueryHandler[Q, R]) error {
+	return core.RegisterQuery(bus, handler)
+}
+
+func RegisterEvent[E core.Event](bus core.EventBus, handler core.EventHandler[E]) error {
+	return core.SubscribeEvent(bus, handler)
+}
+
+func (app *Application) GetCommandBus() core.CommandBus {
+	return app.commandBus
+}
+
+func (app *Application) GetQueryBus() core.QueryBus {
+	return app.queryBus
+}
+
+func (app *Application) GetEventBus() core.EventBus {
+	return app.eventBus
+}
+
+func (app *Application) GetScheduler() core.Scheduler {
+	return app.scheduler
 }

@@ -9,8 +9,7 @@ import (
 
 // mockServer implements core.ServerInterface for testing purposes
 type mockServer struct {
-	middlewares []core.Middleware
-	routes      map[string]core.HandlerFunc
+	routes map[string]core.HandlerFunc
 }
 
 func (m *mockServer) Run() error {
@@ -19,10 +18,6 @@ func (m *mockServer) Run() error {
 
 func (m *mockServer) Shutdown(ctx context.Context) error {
 	return nil
-}
-
-func (m *mockServer) Use(middleware ...core.Middleware) {
-	m.middlewares = append(m.middlewares, middleware...)
 }
 
 func (m *mockServer) Register(method, path string, handler core.HandlerFunc, reqFactory func() any) {
