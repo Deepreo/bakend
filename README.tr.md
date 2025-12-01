@@ -1,5 +1,7 @@
 # Bakend Framework
 
+[![Read in English](https://img.shields.io/badge/Lang-English-blue)](README.md)
+
 `bakend-framework`, Go ile geliştirilmiş, modüler, ölçeklenebilir ve modern backend uygulamaları geliştirmek için tasarlanmış güçlü bir framework'tür. CQRS (Command Query Responsibility Segregation), Event-Driven Architecture ve Clean Architecture prensiplerini benimseyerek, geliştiricilere sağlam bir temel sunar.
 
 ## Özellikler
