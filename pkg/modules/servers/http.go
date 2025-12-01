@@ -139,7 +139,7 @@ func WithConfig(cfg *HttpServerConfig) func(*HttpServerConfig) {
 
 var token string
 
-func NewServer(options ...func(*HttpServerConfig)) (*HttpServer, error) {
+func NewHttpServer(options ...func(*HttpServerConfig)) (*HttpServer, error) {
 	cfg := &HttpServerConfig{
 		ReadTimeout:    DefaultReadTimeout.String(),
 		WriteTimeout:   DefaultWriteTimeout.String(),
