@@ -65,16 +65,20 @@ func (app *Application) Shutdown(ctx context.Context) error {
 	return app.server.Shutdown(ctx)
 }
 
-func RegisterCommand[C core.Command, H core.CommandHandler[C]](bus core.CommandBus, handler H) error {
-	return core.RegisterCommand(bus, handler)
+func RegisterCommand[C core.Command, H core.CommandHandler[C]](app *Application, handler H) error {
+	return core.RegisterCommand(app.commandBus, handler)
 }
 
-func RegisterQuery[Q core.Query, R core.QueryResponse](bus core.QueryBus, handler core.QueryHandler[Q, R]) error {
-	return core.RegisterQuery(bus, handler)
+func RegisterQuery[Q core.Query, R core.QueryResponse](app *Application, handler core.QueryHandler[Q, R]) error {
+	return core.RegisterQuery(app.queryBus, handler)
 }
 
-func RegisterEvent[E core.Event](bus core.EventBus, handler core.EventHandler[E]) error {
-	return core.SubscribeEvent(bus, handler)
+func RegisterEvent[E core.Event](app *Application, handler core.EventHandler[E]) error {
+	return core.SubscribeEvent(app.eventBus, handler)
+}
+
+func RegisterEndpoint[R core.Request, Res core.Response](app *Application, method, path string, handler core.HandlerInterface[R, Res]) {
+	core.RegisterEndpoint(app.server, method, path, handler)
 }
 
 func (app *Application) GetCommandBus() core.CommandBus {
